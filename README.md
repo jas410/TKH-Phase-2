@@ -30,7 +30,7 @@ This Terraform configuration builds Titan FinTech’s production network from th
 - **cloudwatch_flow_logs.png** — CloudWatch Log Group confirming active VPC Flow Logs  
 - **destroy_verification.png** — Terraform destroy confirmation showing all resources removed
 
-## Troubleshooting Summary: OIDC Role Assumption Failures
+## TLAB 7 - Troubleshooting Summary: OIDC Role Assumption Failures
 
 During the setup of my automated Terraform pipeline, I encountered repeated GitHub Actions failures related to AWS OIDC authentication. Each workflow run failed with the message:
 
