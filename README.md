@@ -13,7 +13,7 @@ This Terraform configuration builds Titan FinTech’s core cloud identity and st
 - **security_audit.png** — IAM role attached to EC2 instance
 - **destroy_verification.png** — Terraform destroy confirmation
 
---
+
 
 ## TLAB6 — The Monitored Fortress (Titan FinTech)
 
@@ -29,6 +29,8 @@ This Terraform configuration builds Titan FinTech’s production network from th
 - **ssm_terminal_proof.png** — Browser‑based SSM session showing `whoami` returning `ssm-user`  
 - **cloudwatch_flow_logs.png** — CloudWatch Log Group confirming active VPC Flow Logs  
 - **destroy_verification.png** — Terraform destroy confirmation showing all resources removed
+
+
 
 ## TLAB 7 - Troubleshooting Summary: OIDC Role Assumption Failures
 
