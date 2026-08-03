@@ -29,3 +29,35 @@ This Terraform configuration builds Titan FinTech’s production network from th
 - **ssm_terminal_proof.png** — Browser‑based SSM session showing `whoami` returning `ssm-user`  
 - **cloudwatch_flow_logs.png** — CloudWatch Log Group confirming active VPC Flow Logs  
 - **destroy_verification.png** — Terraform destroy confirmation showing all resources removed
+
+## Troubleshooting Summary: OIDC Role Assumption Failures
+
+During the setup of my automated Terraform pipeline, I encountered repeated GitHub Actions failures related to AWS OIDC authentication. Each workflow run failed with the message:
+
+**“Not authorized to perform sts:AssumeRoleWithWebIdentity.”**
+
+To resolve this, I went through a full set of troubleshooting steps to verify both GitHub and AWS configurations:
+
+### ✔ GitHub Workflow Validation
+- Confirmed the workflow triggers on the correct branch (`main`).
+- Verified the role ARN was correct and fully included in the YAML file.
+- Ensured required permissions were present (`id-token: write`, `contents: read`).
+- Triggered fresh workflow runs using actual Git pushes rather than manual reruns.
+
+### ✔ AWS IAM Role & Trust Policy Checks
+- Verified the IAM role existed and matched the ARN used in the workflow.
+- Confirmed the trust policy included the correct `sub` condition for my repo and branch.
+- Added required OIDC conditions (`aud` and `iss`) to match GitHub’s token format.
+- Ensured the OIDC identity provider was configured with the correct audience (`sts.amazonaws.com`).
+- Checked that the role’s permissions policy allowed all necessary actions.
+
+### ✔ Git & Identity Verification
+- Confirmed my Git username and email matched my GitHub account (`jas410`).
+- Verified no cached or incorrect credentials were stored locally.
+- Ensured pushes were coming from the correct GitHub identity.
+
+### ✔ Result
+Despite multiple corrections and validations, the workflow continued to fail with the same OIDC authorization error. The attached screenshot shows the repeated attempts to assume the role before AWS ultimately rejects the request.
+
+
+
