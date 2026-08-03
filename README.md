@@ -62,7 +62,7 @@ To resolve this, I went through a full set of troubleshooting steps to verify bo
 Despite multiple corrections and validations, the workflow continued to fail with the same OIDC authorization error. The attached screenshot shows the repeated attempts to assume the role before AWS ultimately rejects the request.
 
 
-## S19 — The Traveler’s Guide (Pipeline Lab)
+## MINI LABS: S19 — The Traveler’s Guide (Pipeline Lab)
 
 ### 📘 Project Overview
 This mini‑lab introduces automated cloud governance through CI/CD. After a production outage caused by a manual deployment, Titan FinTech banned all local laptop deployments. As Lead DevSecOps Engineer, I implemented a GitHub Actions workflow that automatically validates Terraform code every time a team member pushes to the repository. This lab establishes the foundation for secure, repeatable, and fully remote infrastructure planning.
