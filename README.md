@@ -12,3 +12,14 @@ This Terraform configuration builds Titan FinTech’s core cloud identity and st
 - **build_success.png** — Successful Terraform apply
 - **security_audit.png** — IAM role attached to EC2 instance
 - **destroy_verification.png** — Terraform destroy confirmation
+
+--
+
+## TLAB6 — The Monitored Fortress (Titan FinTech)
+
+### 📘 Project Overview
+Titan FinTech is expanding into production, and the CISO requires a network that enforces Zero Trust access, captures full telemetry, and prevents all unauthorized inbound traffic. This project delivers a monitored, tightly controlled AWS environment using Terraform. The architecture includes a secure VPC perimeter, a public subnet with internet access, full VPC Flow Log monitoring, and a Zero Trust EC2 instance reachable only through AWS Systems Manager Session Manager. No inbound ports are opened at any point, demonstrating modern cloud security principles.
+
+### 🛠️ Project Description
+This Terraform configuration builds Titan FinTech’s production network from the ground up. It includes a 10.0.0.0/16 VPC, a public subnet, an Internet Gateway, and a route table enabling outbound internet access. The environment is fully monitored using a CloudWatch Log Group and VPC Flow Logs attached to the VPC, capturing all traffic for security analysis. A Zero Trust EC2 instance (Ubuntu, t2.micro) is deployed with **no ingress rules**, relying entirely on AWS Systems Manager for access. The instance uses the provided SSM instance profile, allowing secure browser‑based terminal access without exposing SSH or any inbound ports. The project concludes with a full `terraform destroy` to validate responsible teardown and cost discipline.
+
