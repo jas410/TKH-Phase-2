@@ -25,7 +25,7 @@ This Terraform configuration builds Titan FinTech’s production network from th
 
 ### Included Artifacts
 
-main.tf — Terraform configuration for the secure VPC, Flow Logs, and Zero Trust EC2  
-ssm_terminal_proof.png — Browser‑based SSM session showing `whoami` returning `ssm-user`  
-cloudwatch_flow_logs.png — CloudWatch Log Group confirming active VPC Flow Logs  
-destroy_verification.png — Terraform destroy confirmation showing all resources removed
+- **main.tf** — Terraform configuration for the secure VPC, Flow Logs, and Zero Trust EC2  
+- **ssm_terminal_proof.png** — Browser‑based SSM session showing `whoami` returning `ssm-user`  
+- **cloudwatch_flow_logs.png** — CloudWatch Log Group confirming active VPC Flow Logs  
+- **destroy_verification.png** — Terraform destroy confirmation showing all resources removed
