@@ -62,4 +62,56 @@ To resolve this, I went through a full set of troubleshooting steps to verify bo
 Despite multiple corrections and validations, the workflow continued to fail with the same OIDC authorization error. The attached screenshot shows the repeated attempts to assume the role before AWS ultimately rejects the request.
 
 
+## S19 — The Traveler’s Guide (Pipeline Lab)
+
+### 📘 Project Overview
+This mini‑lab introduces automated cloud governance through CI/CD. After a production outage caused by a manual deployment, Titan FinTech banned all local laptop deployments. As Lead DevSecOps Engineer, I implemented a GitHub Actions workflow that automatically validates Terraform code every time a team member pushes to the repository. This lab establishes the foundation for secure, repeatable, and fully remote infrastructure planning.
+
+### 🛠️ Project Description
+The S19 Pipeline Lab consists of two phases.  
+In **Phase 1**, I repaired a sabotaged GitHub Actions YAML workflow (`pulse.yml`) by correcting indentation inside the `jobs` block. Once fixed, the workflow executed successfully and printed “Hello DevSecOps!” in the Actions console, confirming the runner was functioning.
+
+In **Phase 2**, I expanded the automation by creating a `terraform-plan.yml` workflow that performs Terraform initialization and planning directly inside the GitHub runner. I injected AWS credentials as encrypted repository secrets, configured the HashiCorp Terraform setup action, and ensured the repository contained a valid `main.tf` so the plan could execute. Each push to `main` now triggers a remote Terraform plan, proving that infrastructure validation can occur without relying on local machines.
+
+### 📁 S19 Artifacts
+- `.github/workflows/pulse.yml` — Fixed YAML workflow  
+- `.github/workflows/terraform-plan.yml` — Automated Terraform plan pipeline  
+- `main.tf` — Minimal Terraform configuration for remote planning  
+- `pipeline_success.png` — Screenshot of successful GitHub Actions run
+
+## S20 — The Traveler’s Guide (Quality Lab)
+
+### 📘 Project Overview
+This mini‑lab introduces security quality gates through automated static analysis. After repeated incidents involving insecure S3 deployments, Titan FinTech mandated that all infrastructure code must pass a SAST scan before any pipeline can proceed. As the DevSecOps Engineer, I integrated tfsec into GitHub Actions to enforce secure-by-default Terraform practices. This lab demonstrates how Shift‑Left security prevents misconfigurations from ever reaching production.
+
+### 🛠️ Project Description
+The S20 Quality Lab is structured around intentional failure followed by remediation.  
+In **Phase 1**, I cloned the lab repository and examined the sabotaged `main.tf` file, which contained an S3 bucket configured with `acl = "public-read"`. This violates cloud security policy and triggers tfsec findings. I created a GitHub Actions workflow (`tfsec-pipeline.yml`) using Aqua Security’s tfsec action to scan the repository on every push to `main`. After committing and pushing the vulnerable code, the pipeline correctly failed, displaying red status and detailed security violations such as public access exposure and missing encryption.
+
+In **Phase 2**, I remediated the Terraform configuration based on tfsec’s findings. I removed the public ACL, added a `aws_s3_bucket_public_access_block` resource to enforce private access, and implemented server‑side encryption using `aws_s3_bucket_server_side_encryption_configuration`. After committing the fixes, the pipeline re-ran and passed successfully, proving that the quality gate now enforces secure infrastructure standards.
+
+### 📁 S20 Artifacts
+- `.github/workflows/tfsec-pipeline.yml` — SAST quality gate workflow  
+- `main.tf` — Remediated secure S3 configuration  
+- `pipeline_failure.png` — Screenshot of failed tfsec scan  
+- `pipeline_success.png` — Screenshot of successful green quality gate
+
+## S21 — The Traveler’s Guide (Delivery Lab)
+
+### 📘 Project Overview
+This mini‑lab focuses on modern, keyless cloud deployment using GitHub’s OIDC federation. Titan FinTech’s Security Operations Center issued a mandate to eliminate all long‑lived AWS Access Keys from GitHub Secrets. As the DevSecOps Engineer, I began establishing an OIDC trust relationship between GitHub Actions and AWS so Terraform deployments could authenticate dynamically without static credentials. This lab demonstrates the shift from secret‑based authentication to secure, short‑lived identity tokens.
+
+### 🛠️ Project Description
+The S21 Delivery Lab centers on building the OIDC “handshake” between GitHub and AWS.  
+In **Phase 1**, I cloned the lab repository and created an OpenID Connect Identity Provider in AWS IAM using the official GitHub token endpoint. I then repaired the sabotaged `trust-policy.json`, tightening the `StringLike` condition so only my personal repository (`jas410/S21-Delivery-Lab`) and the `main` branch could assume the role. After replacing the placeholder AWS Account ID and repository string, I created a Web Identity IAM Role and attached temporary AdministratorAccess permissions for lab testing.
+
+In **Phase 2**, I began constructing the keyless deployment pipeline. I removed all long‑lived AWS Access Keys from GitHub Secrets and created a new GitHub Actions workflow (`deploy.yml`) that uses `aws-actions/configure-aws-credentials` to authenticate via OIDC. The workflow included the required permissions block (`id-token: write`) and Terraform steps for initialization and apply. Although the pipeline did not fully succeed yet, the OIDC configuration and role trust relationship were correctly established, and the remaining work involves finalizing the role ARN and Terraform resource configuration.
+
+### 📁 S21 Artifacts
+- `trust-policy.json` — Corrected OIDC trust policy  
+- `.github/workflows/deploy.yml` — Keyless Terraform deployment workflow  
+- `main.tf` — Terraform configuration used for testing OIDC deployment  
+- `oidc_attempt.png` — Screenshot of the pipeline attempt and authentication logs  
+- `destroy_verification.png` — Screenshot of local `terraform destroy` proving teardown
+
 
