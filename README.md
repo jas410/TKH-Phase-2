@@ -23,3 +23,9 @@ Titan FinTech is expanding into production, and the CISO requires a network that
 ### 🛠️ Project Description
 This Terraform configuration builds Titan FinTech’s production network from the ground up. It includes a 10.0.0.0/16 VPC, a public subnet, an Internet Gateway, and a route table enabling outbound internet access. The environment is fully monitored using a CloudWatch Log Group and VPC Flow Logs attached to the VPC, capturing all traffic for security analysis. A Zero Trust EC2 instance (Ubuntu, t2.micro) is deployed with **no ingress rules**, relying entirely on AWS Systems Manager for access. The instance uses the provided SSM instance profile, allowing secure browser‑based terminal access without exposing SSH or any inbound ports. The project concludes with a full `terraform destroy` to validate responsible teardown and cost discipline.
 
+### Included Artifacts
+
+main.tf — Terraform configuration for the secure VPC, Flow Logs, and Zero Trust EC2  
+ssm_terminal_proof.png — Browser‑based SSM session showing `whoami` returning `ssm-user`  
+cloudwatch_flow_logs.png — CloudWatch Log Group confirming active VPC Flow Logs  
+destroy_verification.png — Terraform destroy confirmation showing all resources removed
