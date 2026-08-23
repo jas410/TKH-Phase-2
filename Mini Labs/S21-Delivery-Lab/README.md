@@ -45,4 +45,66 @@ This phase establishes the secure handshake between GitHub and AWS.
 
 - Delete all long‑lived AWS Access Keys from GitHub Secrets  
 - Create `.github/workflows/deploy.yml`  
-- Add the required OIDC permissions block:
+- Add the required OIDC permissions block: permissions:
+id-token: write
+contents: read
+
+- Configure AWS credentials
+
+- Replace the `role-to-assume` value with your actual IAM Role ARN  
+- Add Terraform initialization and apply steps  
+- Ensure `main.tf` contains valid infrastructure (e.g., VPC, EC2, S3)  
+- Commit and push to trigger the pipeline
+
+---
+
+## 🧩 Phase 3 — Submission Requirements
+
+You must submit:
+
+- **Screenshot A:** Successful GitHub Actions run showing expanded **Terraform Apply** logs  
+- **Screenshot B:** Local terminal output after running: terraform destroy -auto-approve
+
+- **Your corrected `trust-policy.json` file**
+
+---
+
+## 🛠️ Technologies Used
+
+- AWS IAM (OIDC, Web Identity Roles)  
+- GitHub Actions  
+- Terraform (HCL)  
+- aws-actions/configure-aws-credentials  
+- YAML  
+- Linux / Ubuntu  
+- Git & Version Control
+
+---
+
+
+---
+
+## 🔐 Security Notes
+
+- All long‑lived AWS keys must be deleted  
+- OIDC tokens are short‑lived and scoped to the workflow  
+- GitHub Actions runners authenticate securely without secrets  
+- IAM trust policies must be tightly scoped to specific repos and branches
+
+---
+
+## 🏁 Outcome
+
+This lab demonstrates your ability to:
+
+- Build secure, modern identity‑federated CI/CD pipelines  
+- Replace static credentials with OIDC authentication  
+- Deploy and destroy infrastructure using ephemeral tokens  
+- Enforce SOC policies and cloud security best practices  
+- Produce audit‑ready DevSecOps artifacts
+
+
+
+
+
+
