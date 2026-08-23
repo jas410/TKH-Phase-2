@@ -57,7 +57,44 @@ This creates a fully automated, secure deployment pipeline.
 This demonstrates proper shift‑left remediation.
 
 ### • Teardown
-I authenticated locally, re‑initialized Terraform with the S3 backend, and ran:
+I authenticated locally, re‑initialized Terraform with the S3 backend, and ran: terraform destroy -auto-approve
+
+
+This wiped all resources and completed the lifecycle.
+
+---
+
+## How I Did It
+
+1. Cloned the repo and verified OIDC  
+2. Created IAM role + trust policy  
+3. Built S3 backend for Terraform state  
+4. Wrote the unified GitHub Actions pipeline  
+5. Pushed code → tfsec failure  
+6. Remediated ingress rules  
+7. Pushed again → successful apply  
+8. Destroyed infrastructure locally  
+
+---
+
+## Technologies Used
+
+- GitHub Actions  
+- AWS IAM (OIDC)  
+- Terraform (HCL)  
+- tfsec (SAST)  
+- S3 Backend  
+- Linux / Ubuntu  
+- Git  
+
+---
+
+## Outcome
+
+This capstone demonstrates full DevSecOps pipeline synthesis:  
+**Keyless authentication → Automated scanning → Secure deployment → Complete teardown.**
+
+
 
 
 
