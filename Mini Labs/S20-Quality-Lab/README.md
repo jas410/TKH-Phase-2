@@ -67,3 +67,27 @@ These artifacts prove the full shift-left lifecycle:
 
 ---
 
+
+---
+
+## 🔐 Security Notes
+
+- Public S3 buckets are prohibited  
+- All scans run automatically on every push to `main`  
+- The pipeline enforces secure-by-default cloud infrastructure  
+- tfsec acts as a mandatory quality gate for Terraform deployments
+
+---
+
+## 🏁 Outcome
+
+This lab demonstrates your ability to:
+
+- Integrate SAST scanning into CI/CD  
+- Detect insecure cloud configurations  
+- Remediate vulnerabilities using AWS best practices  
+- Enforce shift-left security in Terraform workflows  
+- Build production-grade DevSecOps guardrails
+
+Perfect for showcasing in a **Cloud Security Architect** or **DevSecOps Engineer** portfolio.
+
