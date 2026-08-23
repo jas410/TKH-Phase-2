@@ -56,3 +56,25 @@ This phase demonstrates secure, automated cloud provisioning without local machi
 - **Git & Version Control**
 
 ---
+
+---
+
+## 🔐 Security Notes
+
+- No local deployments are allowed  
+- All AWS credentials must be stored in GitHub Secrets  
+- Terraform runs remotely on ephemeral GitHub runners  
+- Ensures auditability, consistency, and secure provisioning
+
+---
+
+## 🏁 Outcome
+
+This lab demonstrates my ability to:
+
+- Build secure CI/CD pipelines  
+- Automate Terraform planning  
+- Enforce cloud governance  
+- Respond to real DevSecOps constraints  
+- Produce audit‑ready infrastructure workflows
+
