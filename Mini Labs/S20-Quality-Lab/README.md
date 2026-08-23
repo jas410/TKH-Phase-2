@@ -81,7 +81,7 @@ These artifacts prove the full shift-left lifecycle:
 
 ## 🏁 Outcome
 
-This lab demonstrates your ability to:
+This lab demonstrates my ability to:
 
 - Integrate SAST scanning into CI/CD  
 - Detect insecure cloud configurations  
@@ -89,5 +89,4 @@ This lab demonstrates your ability to:
 - Enforce shift-left security in Terraform workflows  
 - Build production-grade DevSecOps guardrails
 
-Perfect for showcasing in a **Cloud Security Architect** or **DevSecOps Engineer** portfolio.
 
