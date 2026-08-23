@@ -1,16 +1,13 @@
-# TLAB5 — Budgeted Identity (Terraform AWS Architecture)
+# TLAB5 — Budgeted Identity (Titan FinTech)
 
-This lab builds a secure, cost‑controlled AWS environment for “Titan FinTech” using Terraform. The goal was to prevent overspending (“Denial of Wallet”) and enforce strict least‑privilege security after a breach caused by a wildcard IAM policy. The project includes a budget firewall, a private S3 vault, a surgical IAM role, and an EC2 instance that uses that role.
+This lab builds Titan FinTech’s foundational AWS architecture using Terraform with strict cost controls and least‑privilege IAM design. The goal was to prevent overspending (“Denial of Wallet”) and avoid security breaches caused by wildcard IAM policies.
 
 ---
 
-## 📌 What I Built
+## What I Did
 
-### 1. AWS Budget Firewall
-I created an `aws_budgets_budget` resource with:
-- A **hard monthly limit of $10.00**
-- An email alert at **80% usage**
-This ensures Titan FinTech cannot accidentally overspend.
+### • Created a $10 Monthly AWS Budget
+I added an `aws_budgets_budget` resource with an email alert at 80% usage to enforce cost limits.
 
-### 2. Private S3 Storage Vault
-I built a private S3 bucket named dynamically using my initials:
+### • Built a Private S3 Vault
+I created a private S3 bucket named dynamically with my initials using Terraform interpolation:
