@@ -67,15 +67,3 @@ These artifacts prove the full shift-left lifecycle:
 
 ---
 
-## 📂 Repository Structure
-
-S20-Quality-Lab/
-│
-├── .github/
-│   └── workflows/
-│       └── tfsec-pipeline.yml
-│
-├── main.tf
-├── S20 Phase 1.png   (failed pipeline screenshot)
-├── S20 Phase 2.png   (successful pipeline screenshot)
-└── README.md         ← (this file)
