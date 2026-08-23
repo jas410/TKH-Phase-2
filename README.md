@@ -46,4 +46,3 @@ Phase 2 demonstrates my ability to:
 - Apply and destroy infrastructure responsibly  
 - Produce audit‑ready DevSecOps artifacts  
 
-This phase forms the core of my Cloud Security Architect and DevSecOps engineering portfolio.
