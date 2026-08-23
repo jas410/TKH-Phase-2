@@ -16,14 +16,6 @@ This repository contains my Phase 2 cloud engineering and DevSecOps labs for The
 
 ---
 
-## 📁 Repository Structure
-This repo is organized into small, focused labs inside the **Mini Labs** directory.  
-Each lab folder contains:
-- A short README explaining the scenario  
-- Terraform code (`main.tf`)  
-- GitHub Actions workflows  
-- Screenshots of pipeline runs or AWS verification steps  
-
 ---
 
 ## 🎯 Phase Summary
