@@ -29,5 +29,36 @@ This creates a fully automated, secure deployment pipeline.
 This demonstrates proper shift‑left remediation.
 
 ### • Teardown
+I authenticated locally, re‑initialized Terraform with the S3 backend, and ran: 
+repo:YourGitHubUsername/TLAB7-Forge:ref:refs/heads/main
+
+
+This ensures only my pipeline can assume the role.
+
+### • S3 State Vault
+I created a permanent S3 bucket:
+
+
+Then I configured Terraform’s backend to store its state file in that vault.
+
+### • Unified 3‑Stage Pipeline (Authenticate ➜ Scan ➜ Deploy)
+I built `.github/workflows/forge-pipeline.yml` combining:
+- **OIDC authentication** (no AWS keys)
+- **tfsec SAST scanning** (soft_fail = false)
+- **Terraform apply -auto-approve**
+
+This creates a fully automated, secure deployment pipeline.
+
+### • Failure → Fix → Success Lifecycle
+1. First push: pipeline fails at tfsec  
+2. I read the logs and fixed the flagged issue (`aws-vpc-no-public-ingress-sgr`)  
+3. Second push: pipeline passes and deploys the infrastructure
+
+This demonstrates proper shift‑left remediation.
+
+### • Teardown
 I authenticated locally, re‑initialized Terraform with the S3 backend, and ran:
+
+
+
 
