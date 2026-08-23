@@ -95,7 +95,7 @@ You must submit:
 
 ## 🏁 Outcome
 
-This lab demonstrates your ability to:
+This lab demonstrates my ability to:
 
 - Build secure, modern identity‑federated CI/CD pipelines  
 - Replace static credentials with OIDC authentication  
